@@ -1,0 +1,19 @@
+{
+  "disease_info": {
+    "Potato___Early_blight": {
+      "display_name": "Potato Early Blight",
+      "description": "Early blight is caused by the fungus Alternaria solani. It appears as small, black spots on older leaves, which develop concentric rings (target-like pattern).",
+      "advice": "Apply fungicides like chlorothalonil or mancozeb. Rotate crops and remove infected plant debris after harvest to reduce fungal spores."
+    },
+    "Potato___Late_blight": {
+      "display_name": "Potato Late Blight",
+      "description": "Late blight is a serious disease caused by Phytophthora infestans. It shows as large, irregular water-soaked spots that rapidly turn brown or black, often with white mold on the underside.",
+      "advice": "Immediate application of copper-based fungicides is needed. Improve air circulation and avoid overhead watering. If severe, remove and destroy infected plants immediately."
+    },
+    "Potato___healthy": {
+      "display_name": "Healthy Potato Leaf",
+      "description": "The leaf appears healthy with no visible signs of fungal or bacterial infection. It shows good color and turgor.",
+      "advice": "Continue regular monitoring. Maintain proper watering and nutrition schedules to keep the plant resilient against future diseases."
+    }
+  }
+}
