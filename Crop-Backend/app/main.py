@@ -21,7 +21,10 @@ from app.database import engine, Base
 from app.models import database_models
 
 # Create database tables
-Base.metadata.create_all(bind=engine)
+try:
+    Base.metadata.create_all(bind=engine)
+except Exception as exc:
+    print(f"WARNING: Database table setup failed: {exc.__class__.__name__}")
 
 app = FastAPI(
     title="Potato Disease Detection API",

@@ -42,21 +42,24 @@ async def predict(file: UploadFile = File(...), db: Session = Depends(get_db)):
     # Get prediction
     try:
         result = predict_disease(image_bytes)
-        
-        # Save to database
-        db_prediction = Prediction(
-            disease=result["disease"],
-            display_name=result["display_name"],
-            confidence=result["confidence"],
-            description=result["description"],
-            advice=result["advice"]
-        )
-        db.add(db_prediction)
-        db.commit()
-        db.refresh(db_prediction)
-        
+
+        # Saving history is optional: prediction should still work if the database
+        # becomes unavailable after startup.
+        try:
+            db_prediction = Prediction(
+                disease=result["disease"],
+                display_name=result["display_name"],
+                confidence=result["confidence"],
+                description=result["description"],
+                advice=result["advice"]
+            )
+            db.add(db_prediction)
+            db.commit()
+            db.refresh(db_prediction)
+        except Exception:
+            db.rollback()
+
     except Exception as e:
-        db.rollback()
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
     return PredictionResponse(**result)
